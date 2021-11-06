@@ -414,11 +414,14 @@ namespace px4uploader
 
         public void __send(byte c)
         {
+            Console.WriteLine("__send " + c.ToString("X"));
             port.Write(new byte[] { c }, 0, 1);
         }
 
         public void __send(byte[] c)
         {
+            foreach (var i in c)
+                Console.WriteLine("__send " + i.ToString("X"));
             port.Write(c, 0, c.Length);
         }
 
@@ -429,7 +432,12 @@ namespace px4uploader
             byte[] c = new byte[count];
             int pos = 0;
             while (pos < count)
+            {
                 pos += port.Read(c, pos, count - pos);
+            }
+
+            foreach (var i in c)
+                Console.WriteLine("__recv " + i.ToString("X"));
 
             return c;
         }
