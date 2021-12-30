@@ -83,10 +83,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.DpiAwareness">
-      <Version>6.5.29903</Version>
+      <Version>7.0.31902</Version>
     </PackageReference>
     <PackageReference Include="SkiaSharp">
-      <Version>2.80.2</Version>
+      <Version>2.80.3</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

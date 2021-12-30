@@ -147,7 +147,11 @@ namespace MissionPlanner
             Thread = Thread.CurrentThread;
 
             System.Windows.Forms.Application.EnableVisualStyles();
-            XmlConfigurator.Configure(LogManager.GetRepository(Assembly.GetCallingAssembly()));
+            try
+            {
+                XmlConfigurator.Configure(LogManager.GetRepository(Assembly.GetCallingAssembly()));
+            }
+            catch { }
             log.Info("******************* Logging Configured *******************");
 
             ServicePointManager.DefaultConnectionLimit = 10;
@@ -759,7 +763,7 @@ namespace MissionPlanner
                         var result = new Dictionary<int, string[]>();
 
                         var pid = Process.GetCurrentProcess().Id;
-
+                        /*
                         using (var dataTarget = DataTarget.AttachToProcess(pid, 5000, AttachFlag.Passive))
                         {
                             ClrInfo runtimeInfo = dataTarget.ClrVersions[0];
@@ -781,7 +785,7 @@ namespace MissionPlanner
                                 );
                             }
                         }
-
+                        */
                         processinfo =
                             result.ToJSON(Formatting.Indented); //;Process.GetCurrentProcess().Modules.ToJSON();
                     }
